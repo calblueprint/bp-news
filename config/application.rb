@@ -43,7 +43,7 @@ end
 # config/initializers/production.rb
 class << Rails.application
   def domain
-    "news.calblueprint.org"
+    "calblueprint.org"
   end
 
   def name

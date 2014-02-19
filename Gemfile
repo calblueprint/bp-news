@@ -8,7 +8,7 @@ gem "rails", "4.0.2"
 # Use mysql2 as the database for Active Record
 gem "mysql2", ">= 0.3.14"
 
-gem "pg"
+gem "pg", "0.17.1"
 
 # Use PostgreSQL as the database for Active Record
 # gem "pg"

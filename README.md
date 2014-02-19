@@ -1,4 +1,8 @@
-###Lobsters Rails Project
+# BP News
+
+![bp](http://bptech.berkeley.edu/assets/logo-full-large-d6419503b443e360bc6c404a16417583.png "BP Banner")
+
+### Lobsters Rails Project
 
 This is the source code to the site operating at
 [https://lobste.rs](https://lobste.rs).  It is a Rails 4 codebase and uses a

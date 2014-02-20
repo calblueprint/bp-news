@@ -36,6 +36,7 @@ class InvitationsController < ApplicationController
         flash[:success] = "Successfully e-mailed invitation to " <<
           params[:email].to_s << "."
       else
+        puts i.errors.messages
         raise
       end
     rescue

@@ -9,6 +9,8 @@ class Search
 
   validates_length_of :q, :minimum => 2
 
+  per_page = 20
+
   def initialize
     @q = ""
     @what = "all"

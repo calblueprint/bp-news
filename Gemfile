@@ -5,19 +5,8 @@ ruby '2.1.0'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "4.0.2"
 
-# Use mysql2 as the database for Active Record
-gem "mysql2", ">= 0.3.14"
-
-gem "pg", "0.17.1"
-
 # Use PostgreSQL as the database for Active Record
-# gem "pg"
-#
-# NOTE: If you use PostgreSQL, you must still leave enabled the above mysql2 gem
-#       for Sphinx full text search to function.
-
-# Use Uglifier as compressor for JavaScript assets
-gem "uglifier", ">= 1.3.0"
+gem "pg", "0.17.1"
 
 # Use jquery as the JavaScript library
 gem "jquery-rails"
@@ -32,22 +21,30 @@ gem "bcrypt-ruby", "~> 3.1.2"
 # Use unicorn as the app server
 gem "unicorn"
 
+# Postgres full-text search
+gem "pg_search", "0.7.3"
+
 gem "nokogiri"
 gem "htmlentities"
 gem "rdiscount"
 
 gem "oauth"
 
-gem "thinking-sphinx", "~> 3.0.6"
-
 gem "mail"
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem "machinist"
-  gem "sqlite3"
   gem "foreman"
 end
+
+group :assets do
+  # Use Uglifier as compressor for JavaScript assets
+  gem "uglifier", ">= 1.3.0"
+
+  gem "sass-rails", "~> 4.0.0"
+end
+
 
 # HEROKU
 gem 'rails_12factor', group: :production

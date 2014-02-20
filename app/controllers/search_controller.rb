@@ -1,24 +1,29 @@
 class SearchController < ApplicationController
+
   def index
     @title = "Search"
     @cur_url = "/search"
-
-    @search = Search.new
-
-    if params[:q].to_s.present?
-      @search.q = params[:q].to_s
-      @search.what = params[:what]
-      @search.order = params[:order]
-
-      if params[:page].present?
-        @search.page = params[:page].to_i
-      end
-
-      if @search.valid?
-        @search.search_for_user!(@user)
-      end
+    if params[:what].to_s.empty?
+      params[:what] = "all"
     end
 
-    render :action => "index"
+    @results = []
+    if params[:q].to_s.present?
+      case params[:what]
+      when "all"
+        @results = Story.search(params[:q]) + Comment.search(params[:q])
+      when "users"
+        @results = User.search(params[:q])
+      when "stories"
+        @results = Story.search(params[:q])
+      when "comments"
+        @results = Comment.search(params[:q])
+      end
+
+      if params[:page].present?
+        @results = @results.paginate(params[:page].to_i)
+      end
+    end
   end
+
 end

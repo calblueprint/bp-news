@@ -1,4 +1,9 @@
 class Story < ActiveRecord::Base
+  include PgSearch
+
+  pg_search_scope :search, against: [[:title, 'A'], [:description, 'B']],
+                           using: {tsearch: {prefix: true, normalization: 2}}
+
   belongs_to :user
   has_many :taggings,
     :autosave => true
@@ -302,7 +307,7 @@ class Story < ActiveRecord::Base
   end
 
   def short_id_url
-    Rails.application.routes.url_helpers.root_url + "s/#{self.short_id}"
+    "/s/#{self.short_id}"
   end
 
   def score

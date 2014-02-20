@@ -1,14 +1,15 @@
 development:
-  adapter: mysql2
-  encoding: utf8mb4
-  reconnect: false
-  database: bp_news_dev
-  socket: /tmp/mysql.sock
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: bp_news_development
   username: USERNAME
   password:
 
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: bp_news_test<%= ENV["TEST_ENV_NUMBER"] %>
+  username: USERNAME
+  password:

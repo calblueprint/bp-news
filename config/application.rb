@@ -60,5 +60,8 @@ class << Rails.application
   end
 end
 
+# Note that Rails.application.routes.default_url_options[:host] is set in environments
+Rails.application.routes.default_url_options[:host] = Rails.application.domain
+
 
 require "#{Rails.root}/lib/monkey"

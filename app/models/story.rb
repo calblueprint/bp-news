@@ -1,4 +1,6 @@
 class Story < ActiveRecord::Base
+  include PgSearch
+
   belongs_to :user
   has_many :taggings,
     :autosave => true

@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   include PgSearch
 
-  multisearchable against: [:username, :email]
+  pg_search_scope :search, against: [[:username, 'A'], [:email, 'A']],
+                               using: {tsearch: {prefix: true, normalization: 2}}
 
   has_many :stories,
     -> { includes :user }

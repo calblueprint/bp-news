@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include PgSearch
 
   pg_search_scope :search, against: [[:username, 'A'], [:email, 'A']],
-                               using: {tsearch: {prefix: true, normalization: 2}}
+                           using: {tsearch: {prefix: true, normalization: 2}}
 
   has_many :stories,
     -> { includes :user }

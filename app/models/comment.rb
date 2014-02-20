@@ -1,4 +1,9 @@
 class Comment < ActiveRecord::Base
+  include PgSearch
+
+  pg_search_scope :search, against: [[:comment, 'A']],
+                           using: {tsearch: {prefix: true, normalization: 2}}
+
   belongs_to :user
   belongs_to :story,
     :inverse_of => :comments

@@ -36,10 +36,10 @@ class InvitationsController < ApplicationController
         flash[:success] = "Successfully e-mailed invitation to " <<
           params[:email].to_s << "."
       else
-        puts i.errors.messages
         raise
       end
     rescue
+      puts i.errors.messages
       flash[:error] = "Could not send invitation, verify the e-mail " <<
         "address is valid."
     end

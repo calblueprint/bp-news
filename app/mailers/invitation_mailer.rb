@@ -10,5 +10,6 @@ class InvitationMailer < ActionMailer::Base
       subject: "[#{Rails.application.name}] You have been invited to " <<
         Rails.application.name
     )
+    puts "[USER_DEBUG] invitation to" + i.email + "mailed successfully"
   end
 end

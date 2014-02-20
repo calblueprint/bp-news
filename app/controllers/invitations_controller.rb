@@ -31,6 +31,7 @@ class InvitationsController < ApplicationController
 
     begin
       if i.save
+        puts "[USER_DEBUG] invitation to" + i.email + "saved successfully"
         i.send_email
         flash[:success] = "Successfully e-mailed invitation to " <<
           params[:email].to_s << "."

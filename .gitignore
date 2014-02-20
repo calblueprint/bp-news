@@ -36,3 +36,4 @@ config/unicorn.conf.rb
 # config/initializers/secret_token.rb
 
 # ADD .env to set heroku env variables
+config/initializers/environment_variables.rb

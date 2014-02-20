@@ -32,6 +32,8 @@ gem "oauth"
 
 gem "mail"
 
+gem "hipchat-api"
+
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem "machinist"

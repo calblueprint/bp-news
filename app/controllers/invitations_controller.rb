@@ -39,7 +39,6 @@ class InvitationsController < ApplicationController
         raise
       end
     rescue
-      puts i.errors.messages
       flash[:error] = "Could not send invitation, verify the e-mail " <<
         "address is valid."
     end

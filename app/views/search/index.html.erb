@@ -5,59 +5,58 @@
 
   <%= form_tag "/search", :method => :get do %>
     <div class="boxline">
-      <%= text_field_tag "q", @search.q, { :size => 40 }.
-        merge(@search.q.present? ? {} : { :autofocus => "autofocus" }) %>
+      <%= text_field_tag "q", params[:q], { :size => 40 }.
+        merge(params[:q].present? ? {} : { :autofocus => "autofocus" }) %>
       <input type="submit" value="Search">
     </div>
 
     <div class="boxline">
       <label class="required">Include:</label>
 
-      <%= radio_button_tag "what", "all", @search.what == "all" %>
+      <%= radio_button_tag "what", "all", params[:what] == "all" %>
         <label for="what_all" class="normal">All</label>
 
       &nbsp;
 
-      <%= radio_button_tag "what", "stories", @search.what == "stories" %>
+      <%= radio_button_tag "what", "stories", params[:what] == "stories" %>
         <label for="what_stories" class="normal">Stories</label>
 
       &nbsp;
 
-      <%= radio_button_tag "what", "comments", @search.what == "comments" %>
+      <%= radio_button_tag "what", "comments", params[:what] == "comments" %>
         <label for="what_comments" class="normal">Comments</label>
 
       <br>
 
       <label class="required">Order By:</label>
 
-      <%= radio_button_tag "order", "relevance", @search.order == "relevance" %>
+      <%= radio_button_tag "order", "relevance", params[:order] == "relevance" %>
         <label for="order_relevance" class="normal">Relevance</label>
 
       &nbsp;
 
-      <%= radio_button_tag "order", "newest", @search.order == "newest" %>
+      <%= radio_button_tag "order", "newest", params[:order] == "newest" %>
         <label for="order_newest" class="normal">Newest</label>
 
       &nbsp;
 
-      <%= radio_button_tag "order", "points", @search.order == "points" %>
+      <%= radio_button_tag "order", "points", params[:order] == "points" %>
         <label for="order_points" class="normal">Points</label>
     </div>
   <% end %>
 </div>
 
-<% if @search.results.any? %>
+<% if @results.any? %>
   <div class="box">
     <p>
     <div class="legend">
-      <%= @search.total_results %> result<%= @search.total_results == 1 ? "" :
-        "s" %> for "<%= @search.q %>"
+      <%= plurlize "result", @results.count %> for "<%= params[:q] %>"
     </div>
     </p>
   </div>
 
   <ol class="search_results">
-    <% @search.results.each do |res| %>
+    <% @results.each do |res| %>
       <% if res.class == Story %>
         <%= render :partial => "stories/listdetail",
           :locals => { :story => res } %>
@@ -68,15 +67,4 @@
     <% end %>
   </ol>
 
-  <% if @search.total_results > @search.per_page %>
-    <div class="page_link_buttons">
-      Page:
-
-      <% 1.upto(@search.page_count) do |p| %>
-        <a href="/search?<%= raw(@search.to_url_params) %>&amp;page=<%= p
-          %>" class="<%= @search.page == p ? "cur" : "" %>"><%= p
-          %></a>
-      <% end %>
-    </div>
-  <% end %>
 <% end %>

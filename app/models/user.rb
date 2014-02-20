@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  include PgSearch
+
+  multisearchable against: [:username, :email]
+
   has_many :stories,
     -> { includes :user }
   has_many :comments

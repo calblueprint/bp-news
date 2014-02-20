@@ -24,6 +24,9 @@ gem "bcrypt-ruby", "~> 3.1.2"
 # Use unicorn as the app server
 gem "unicorn"
 
+# Postgres full-text search
+gem "pg_search", "0.7.3"
+
 gem "nokogiri"
 gem "htmlentities"
 gem "rdiscount"

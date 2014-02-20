@@ -46,6 +46,10 @@ class << Rails.application
     "news.calblueprint.org"
   end
 
+  def top_domain
+    "calblueprint.org"
+  end
+
   def name
     "BP News"
   end

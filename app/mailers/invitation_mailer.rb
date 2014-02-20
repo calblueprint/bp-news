@@ -1,6 +1,6 @@
 class InvitationMailer < ActionMailer::Base
   default :from => "#{Rails.application.name} " <<
-    "<noreply@#{Rails.application.domain}>"
+    "<noreply@#{Rails.application.top_domain}>"
 
   def invitation(invitation)
     @invitation = invitation

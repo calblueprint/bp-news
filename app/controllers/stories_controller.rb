@@ -23,7 +23,7 @@ class StoriesController < ApplicationController
         Countinual.count!("#{Rails.application.shortname}.stories.submitted",
           "+1")
 
-        hipchat_api = HipChat::API.new('4d95dacc0fc0189f45d553c8ba4be0')
+        hipchat_api = HipChat::API.new(ENV['HIPCHAT_TOKEN'])
         room_id = 203763
         # room_id = 446438 #[P] BP News
 

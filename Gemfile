@@ -8,9 +8,6 @@ gem "rails", "4.0.2"
 # Use PostgreSQL as the database for Active Record
 gem "pg", "0.17.1"
 
-# Use Uglifier as compressor for JavaScript assets
-gem "uglifier", ">= 1.3.0"
-
 # Use jquery as the JavaScript library
 gem "jquery-rails"
 gem "dynamic_form"
@@ -40,6 +37,14 @@ group :test, :development do
   gem "machinist"
   gem "foreman"
 end
+
+group :assets do
+  # Use Uglifier as compressor for JavaScript assets
+  gem "uglifier", ">= 1.3.0"
+
+  gem "sass-rails", "~> 4.0.0"
+end
+
 
 # HEROKU
 gem 'rails_12factor', group: :production

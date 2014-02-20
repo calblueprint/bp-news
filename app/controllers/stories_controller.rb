@@ -29,7 +29,7 @@ class StoriesController < ApplicationController
 
         comments_url = root_url + @story.comments_url
         title = @story.user.username + " posted: " + "<a href ='" + comments_url + "'>" + @story.title + "</a>"
-        hipchat_api.rooms_message(room_id, 'BP News', title, notify = 0, color = 'green', message_format = 'html')        
+        hipchat_api.rooms_message(room_id, 'BP News', title, notify = 1, color = 'green', message_format = 'html')        
 
         return redirect_to @story.comments_url
       end

@@ -50,7 +50,7 @@
   <div class="box">
     <p>
     <div class="legend">
-      <%= plurlize "result", @results.count %> for "<%= params[:q] %>"
+      <%= pluralize @results.count, "result" %> for "<%= params[:q] %>"
     </div>
     </p>
   </div>

@@ -302,7 +302,7 @@ class Story < ActiveRecord::Base
   end
 
   def short_id_url
-    Rails.application.routes.url_helpers.root_url + "s/#{self.short_id}"
+    "/s/#{self.short_id}"
   end
 
   def score

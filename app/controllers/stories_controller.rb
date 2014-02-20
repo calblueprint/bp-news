@@ -23,13 +23,13 @@ class StoriesController < ApplicationController
         Countinual.count!("#{Rails.application.shortname}.stories.submitted",
           "+1")
 
-        hipchat_api = HipChat::API.new('4d95dacc0fc0189f45d553c8ba4be0')
+        hipchat_api = HipChat::API.new(ENV['HIPCHAT_TOKEN'])
         room_id = 203763
         # room_id = 446438 #[P] BP News
 
         comments_url = root_url + @story.comments_url
         title = @story.user.username + " posted: " + "<a href ='" + comments_url + "'>" + @story.title + "</a>"
-        hipchat_api.rooms_message(room_id, 'BP News', title, notify = 0, color = 'green', message_format = 'html')        
+        hipchat_api.rooms_message(room_id, 'BP News', title, notify = 1, color = 'green', message_format = 'html')        
 
         return redirect_to @story.comments_url
       end

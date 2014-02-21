@@ -3,9 +3,13 @@ development:
   encoding: unicode
   host: localhost
   database: bp_news_development
+  username: USERNAME
+  password:
 
 test:
   adapter: postgresql
   encoding: unicode
   host: localhost
   database: bp_news_test<%= ENV["TEST_ENV_NUMBER"] %>
+  username: USERNAME
+  password:

@@ -28,7 +28,6 @@ class StoriesController < ApplicationController
         # room_id = 446438 #[P] BP News
 
         comments_url = @story.comments_url
-        puts comments_url
         title = @story.user.username + " posted: " + "<a href ='" + comments_url + "'>" + @story.title + "</a>"
         hipchat_api.rooms_message(room_id, 'BP News', title, notify = 1, color = 'green', message_format = 'html')        
 

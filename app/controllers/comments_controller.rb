@@ -43,6 +43,12 @@ class CommentsController < ApplicationController
     if comment.valid? && params[:preview].blank? && comment.save
       comment.current_vote = { :vote => 1 }
 
+    hipchat_api = HipChat::API.new(ENV['HIPCHAT_TOKEN'])
+    
+    ellipsis = comment.comment.length > 50 ? '...' : ''
+    msg = comment.user.username + " commented on " + "<a href ='" + story.comments_url + "'>" + story.title + "</a>: " + comment.comment[0...50] + ellipsis
+    hipchat_api.rooms_message(ENV['ROOM_ID'], 'BP News', msg, notify = 0, color = 'yellow', message_format = 'html')
+
       render :partial => "comments/postedreply", :layout => false,
         :content_type => "text/html", :locals => { :comment => comment }
     else

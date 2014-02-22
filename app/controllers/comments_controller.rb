@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
     
     ellipsis = comment.comment.length > 50 ? '...' : ''
     msg = comment.user.username + " commented on " + "<a href ='" + story.comments_url + "'>" + story.title + "</a>: " + comment.comment[0...50] + ellipsis
-    hipchat_api.rooms_message(ENV['ROOM_ID'], 'BP News', msg, notify = 0, color = 'green', message_format = 'html')
+    hipchat_api.rooms_message(ENV['ROOM_ID'], 'BP News', msg, notify = 0, color = 'yellow', message_format = 'html')
 
       render :partial => "comments/postedreply", :layout => false,
         :content_type => "text/html", :locals => { :comment => comment }
